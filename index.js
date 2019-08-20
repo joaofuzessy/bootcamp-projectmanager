@@ -1,10 +1,20 @@
 const express = require('express');
 const server = express();
 const projects = [];
+let count = 0;
+
 
 server.use(express.json());
 
 //MIDDLEWARES
+
+
+server.use((req, res, next) => {
+    count++;
+    console.log(count);
+
+    return next();
+});
 
 function isProjectId(req, res, next){
     const {id} = req.params;
