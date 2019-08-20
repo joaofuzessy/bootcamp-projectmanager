@@ -46,20 +46,16 @@ server.get('/projects', (req, res) =>{
 
 //Route 3 - PUT /projects/:id
 
-server.put('/projects/:id', (req, res) =>{
+server.put('/projects/:id', isProjectId , (req, res) =>{
     const {id} = req.params;
     const {title} = req.body;
 
-    function isProject(e){
-        return e.id == id;
-    }
 
-    let project = projects.find(isProject);
+    let project = req.project;
 
-    if(project){
-        project.title = title;
-    }
-   
+    
+    project.title = title;
+    
     return res.json(projects);
 })
 
@@ -69,9 +65,6 @@ server.put('/projects/:id', (req, res) =>{
 
 server.delete('/projects/:id', isProjectId , (req, res)=>{
     const {id} = req.params;
-
-    
-
     let project = req.project;
 
     let projectIndex = projects.indexOf(project);
@@ -83,23 +76,15 @@ server.delete('/projects/:id', isProjectId , (req, res)=>{
 
 
 
-
 //Route 5 - POST TASK /projects/:id/tasks
 
-server.post('/projects/:id/tasks', (req, res) =>{
+server.post('/projects/:id/tasks', isProjectId , (req, res) =>{
     const {id} = req.params;
     const {title} = req.body;
+    let project = req.project;
 
-    function isProject(e){
-        return e.id == id;
-    }
-
-    let project = projects.find(isProject);
-
-    if(project){
-        project.tasks.push(title);
-    }
-   
+    project.tasks.push(title);
+    
     return res.json(projects);
 })
 
