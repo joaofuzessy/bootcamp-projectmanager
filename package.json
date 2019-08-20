@@ -1,0 +1,17 @@
+{
+  "name": "project_manager",
+  "version": "1.0.0",
+  "description": "Aplicação em node.js para armazenar projetos desenvolvidos no bootcamp da Rocketseat.",
+  "main": "index.js",
+  "author": "João Füzessy",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon index.jx"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
